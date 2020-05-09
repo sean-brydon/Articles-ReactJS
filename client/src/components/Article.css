@@ -1,0 +1,11 @@
+.card{
+    margin:auto;
+    width: 60rem;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    text-align: left;
+    text-transform: uppercase;
+    color: #4CAF50;
+  }

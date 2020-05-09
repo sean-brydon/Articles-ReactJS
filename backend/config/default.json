@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://Admin:Password99@cluster0-scgmp.gcp.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "cmp109"
+}
