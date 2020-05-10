@@ -32,6 +32,11 @@ router.get('/:id', (req, res) => {
 		.then((articles) => res.json(articles))
 		.catch((err) => res.status(400).json('Error: ' + err));
 });
+router.get('/:username', (req, res) => {
+	Articles.find({ username: req.params.username })
+		.then((articles) => res.json(articles))
+		.catch((err) => res.status(400).json('Error: ' + err));
+});
 
 router.delete('/:id', auth, (req, res) => {
 	Articles.findByIdAndDelete(req.params.id)

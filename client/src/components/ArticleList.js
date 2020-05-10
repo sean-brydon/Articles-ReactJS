@@ -47,7 +47,7 @@ export class ArticleList extends Component {
 		const { articles } = this.state;
 		return articles.map((article) => {
 			if (isAuthenticated) {
-				if (article.username === user.username || user.securityLevel === 1) {
+				if (article.username === user.username || user.username === 'Admin') {
 					var perms = true;
 				}
 			}
@@ -64,6 +64,7 @@ export class ArticleList extends Component {
 							</p>
 							<p className="card-text">{article.body}</p>
 							<h5>Comments</h5>
+							<hr />
 							{article.comments.map((comment, i) => {
 								const [ username, body ] = comment;
 								return (
@@ -75,7 +76,6 @@ export class ArticleList extends Component {
 								);
 							})}
 							{isAuthenticated ? <LeaveAComment user={user} id={article._id} /> : ''}
-							{perms ? <button className="btn btn-info">Edit</button> : <br />}
 							{perms ? (
 								<button
 									id="delete"

@@ -7,7 +7,7 @@ import './css/main.module.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/authActions';
-
+import { EditArticle } from './components/EditArticle';
 import NaviBar from './components/NaviBar.js';
 import ArticleList from './components/ArticleList';
 import CreateArticle from './components/CreateArticle';
@@ -22,8 +22,9 @@ class App extends Component {
 				<Router>
 					<NaviBar />
 					<br />
-					<Route path='/' exact component={ArticleList} />
-					<Route path='/article/create' exact component={CreateArticle} />
+					<Route path="/" exact component={ArticleList} />
+					<Route path="/article/create" exact component={CreateArticle} />
+					<Route path="/article/edit" exact component={EditArticle} />
 				</Router>
 			</Provider>
 		);
