@@ -8,7 +8,7 @@ const articlesSchema = new Schema({
   body: { type: String, required: true },
   img: String,
   date: { type: Date, default: Date.now },
-  likes: { type: Number, default: 0 },
+  likes: { type: Array, default: []},
   comments: { type: Array }
 });
 

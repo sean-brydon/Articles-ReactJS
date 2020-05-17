@@ -7,6 +7,7 @@ export const EditArticle = () => {
 	const [ error, setError ] = useState(false);
 	const [ articles, setArticles ] = useState(false);
 	// console.log(userInfomation);
+	//use useEffect({func},[])
 	if (userInfomation) {
 		if (!articles) {
 			let articlesApi = '/articles/';

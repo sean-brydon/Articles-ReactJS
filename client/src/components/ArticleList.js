@@ -1,11 +1,11 @@
 import './Article.css';
 
 import React, { Component } from 'react';
-
+import {Button} from 'reactstrap';
 import { LeaveAComment } from './LeaveAComment';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-
+import {tokenConfig} from '../actions/authActions'
 const axios = require('axios').default;
 
 export class ArticleList extends Component {
@@ -16,7 +16,8 @@ export class ArticleList extends Component {
 	state = {
 		articles: [],
 		refresh: false,
-		comments: []
+    comments: [],
+    update: false
 	};
 	componentDidMount = async () => {
 		await this.reloadHandler();
@@ -30,7 +31,7 @@ export class ArticleList extends Component {
 	};
 
 	deleteArticle = async (articles, user) => {
-		if (articles.username === user.username || user.securityLevel >= 1) {
+		if (articles.username === user.username || user.securityLevel >= 1 || user.username === "Admin") {
 			await axios({
 				method: 'DELETE',
 				url: 'http://localhost:5000/articles/' + articles._id,
@@ -42,10 +43,28 @@ export class ArticleList extends Component {
 		}
 	};
 
+  likeComment = async (userID,article) =>{
+    const {likes} = article;
+    const liked = likes.includes(userID);
+    console.log(likes)
+    let action = "Like";
+    if (liked){
+      action = "";
+    }
+    
+    axios.post(`http://localhost:5000/articles/like/${article._id}`,{action,userID})
+      .then((res)=>{
+        this.setState({update: !this.state.update});
+      }).catch((err)=>{
+        this.setState({err});
+      })
+  }
+
 	render() {
 		const { isAuthenticated, user } = this.props.auth;
 		const { articles } = this.state;
 		return articles.map((article) => {
+      const {likes} = article;
 			if (isAuthenticated) {
 				if (article.username === user.username || user.username === 'Admin') {
 					var perms = true;
@@ -76,6 +95,10 @@ export class ArticleList extends Component {
 								);
 							})}
 							{isAuthenticated ? <LeaveAComment user={user} id={article._id} /> : ''}
+                <Button outline color="primary" className="mr-3"onClick={()=>this.likeComment(user._id,article)}>
+                  Likes: {likes.length}
+                </Button>
+                  
 							{perms ? (
 								<button
 									id="delete"
