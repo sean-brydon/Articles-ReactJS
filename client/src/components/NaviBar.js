@@ -22,11 +22,6 @@ class Navibar extends Component {
 		const authLinks = (
 			<Fragment>
 				<NavItem>
-					<Link to="/article/Edit" className="nav-link links">
-						Edit Articles
-					</Link>
-				</NavItem>
-				<NavItem>
 					<Link to="/article/create" className="nav-link links">
 						Create Articles
 					</Link>

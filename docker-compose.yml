@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  api:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    container_name: articles-api
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    container_name: articles-client
+
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: articles-db

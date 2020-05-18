@@ -19,6 +19,7 @@ export const LeaveAComment = (props) => {
 			text: comment
 		};
 		await axios.post(`/articles/addComment/`, req);
+		props.refresh();
 	};
 
 	return (

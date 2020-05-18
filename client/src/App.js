@@ -9,8 +9,8 @@ import store from './store';
 import { loadUser } from './actions/authActions';
 import { EditArticle } from './components/EditArticle';
 import NaviBar from './components/NaviBar.js';
-import ArticleList from './components/ArticleList';
 import CreateArticle from './components/CreateArticle';
+import Articles from './components/Articles';
 
 class App extends Component {
 	componentDidMount() {
@@ -22,9 +22,9 @@ class App extends Component {
 				<Router>
 					<NaviBar />
 					<br />
-					<Route path="/" exact component={ArticleList} />
+					<Route path="/" exact component={Articles} />
 					<Route path="/article/create" exact component={CreateArticle} />
-					<Route path="/article/edit" exact component={EditArticle} />
+					<Route path="/article/edit/:id" exact component={EditArticle} />
 				</Router>
 			</Provider>
 		);
