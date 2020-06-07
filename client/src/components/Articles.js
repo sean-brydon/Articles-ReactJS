@@ -44,6 +44,25 @@ const Articles = () => {
 	if (!isLoading) {
 		return (
 			<React.Fragment>
+				<div className="container">
+					<h1>New COVID-19 Lockdown Proposal Poses Unique Threat to Bitcoin’s Ongoing Momentum</h1>
+					<img
+						src="https://www.newsbtc.com/wp-content/uploads/2020/05/bitcoin-covid-19-lockdown-shutterstock_1729440418-860x573.jpg"
+						alt="Headline"
+						className="w-100"
+					/>
+					<h3>
+						Fear, uncertainty, and doubt. FUD is among the most commonly used terms in the crypto space, as
+						those three powerful emotions have the potential to cause massive, panic-induced selloffs. The
+						fear of the novel coronavirus in early Q1 2020 and uncertainty over how it would impact the
+						economy caused investors to doubt their investments and dumped holdings for cash in a
+						catastrophic collapse and liquidity crisis. The selloff was so strong, the day is now referred
+						to as Black Thursday. During the selloff, the stock market tumbled, Bitcoin crashed over 50%,
+						and even safe haven assets like gold fell from highs. Later on, as things got worse, oil prices
+						fell into the negative for the first time in recorded history.
+					</h3>
+					<h5 />
+				</div>
 				<div className="searchBar">
 					<strong>To search by date please use the following format: YYYY-MM-DD</strong>
 					<Input placeholder="Search..." onChange={onChange} />

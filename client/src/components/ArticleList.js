@@ -54,7 +54,7 @@ export const ArticleList = (props) => {
 	return articles.map((article, index) => {
 		const { likes } = article;
 		if (isAuthenticated) {
-			if (article.username === user.username || user.username === 'Admin') {
+			if (article.username === user.username || user.username === 'Admin' || user.securityLevel === 1) {
 				var perms = true;
 			}
 		}
@@ -105,7 +105,7 @@ export const ArticleList = (props) => {
 									className="mr-3"
 									onClick={() => likeComment(user._id, article)}
 								>
-									Likes: {likes.length}
+									Likes: {likes.length - 1}
 								</Button>
 							) : (
 								<Button
@@ -114,7 +114,7 @@ export const ArticleList = (props) => {
 									className="mr-3"
 									onClick={() => setError('You must be logged in to preform this action')}
 								>
-									Likes: {likes.length} Not logged
+									Likes: {likes.length - 1}
 								</Button>
 							)}
 							{perms ? (

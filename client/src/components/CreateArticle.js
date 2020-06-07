@@ -20,7 +20,7 @@ class CreateArticle extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 	onSubmit = (e) => {
-		window.location.href='/'
+		window.location.href = '/';
 		const { user } = this.props.auth;
 		e.preventDefault();
 		// const{ title, body } = this.state;
@@ -33,8 +33,6 @@ class CreateArticle extends Component {
 			likes: 0
 		};
 
-		console.log(article);
-		console.log(Date.parse(Date.now().toString()));
 		axios({
 			method: 'post',
 			url: 'http://localhost:5000/articles/add',
@@ -53,42 +51,42 @@ class CreateArticle extends Component {
 		const { isAuthenticated, user } = this.props.auth;
 		if (isAuthenticated) {
 			return (
-				<form className='form-horizontal' onSubmit={this.onSubmit}>
-					<legend className='col-md'>Create a new article</legend>
+				<form className="form-horizontal" onSubmit={this.onSubmit}>
+					<legend className="col-md">Create a new article</legend>
 
-					<label className='col-md-4 control-label' htmlFor='username'>
+					<label className="col-md-4 control-label" htmlFor="username">
 						Welcome <strong>{user.username}</strong>
 					</label>
-					<div className='col-md-4' />
+					<div className="col-md-4" />
 
-					<div className='form-group'>
-						<label className='col-md-4 control-label' htmlFor='title'>
+					<div className="form-group">
+						<label className="col-md-4 control-label" htmlFor="title">
 							Title
 						</label>
-						<div className='col-md-4'>
+						<div className="col-md-4">
 							<input
-								id='title'
-								name='title'
-								type='text'
+								id="title"
+								name="title"
+								type="text"
 								onChange={this.onChange}
-								className='form-control input-md'
+								className="form-control input-md"
 							/>
 						</div>
 					</div>
 
-					<div className='form-group'>
-						<label className='col-md-4 control-label' htmlFor='body'>
+					<div className="form-group">
+						<label className="col-md-4 control-label" htmlFor="body">
 							Body Content
 						</label>
-						<div className='col-md'>
-							<textarea className='form-control' id='body' name='body' onChange={this.onChange} />
+						<div className="col-md">
+							<textarea className="form-control" id="body" name="body" onChange={this.onChange} />
 						</div>
 					</div>
 
-					<div className='form-group'>
-						<label className='col-md-4 control-label' htmlFor='submit' />
-						<div className='col-md-4'>
-							<button id='submit' name='Submit' className='btn btn-primary'>
+					<div className="form-group">
+						<label className="col-md-4 control-label" htmlFor="submit" />
+						<div className="col-md-4">
+							<button id="submit" name="Submit" className="btn btn-primary">
 								Submit
 							</button>
 						</div>

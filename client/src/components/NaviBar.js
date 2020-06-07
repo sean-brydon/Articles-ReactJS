@@ -1,6 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { Link, NavLink } from 'react-router-dom';
+import {
+	Navbar,
+	NavbarBrand,
+	Nav,
+	NavItem,
+	UncontrolledDropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem
+} from 'reactstrap';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import RegisterModal from './auth/RegisterModal';
@@ -9,7 +18,8 @@ import Logout from './auth/Logout';
 
 class Navibar extends Component {
 	state = {
-		isOpen: false
+		isOpen: false,
+		adminPerms: false
 	};
 
 	static propTypes = {
@@ -18,7 +28,6 @@ class Navibar extends Component {
 
 	render() {
 		const { isAuthenticated, user } = this.props.auth;
-
 		const authLinks = (
 			<Fragment>
 				<NavItem>
@@ -26,11 +35,16 @@ class Navibar extends Component {
 						Create Articles
 					</Link>
 				</NavItem>
+				<NavItem />
 				<UncontrolledDropdown nav inNavbar right="true">
 					<DropdownToggle>
 						<strong>{user ? `Welcome ${user.username}` : ``}</strong>
 					</DropdownToggle>
+
 					<DropdownMenu>
+						<DropdownItem>
+							<NavLink to="Admin/promote">Admin </NavLink>
+						</DropdownItem>
 						<Logout />
 					</DropdownMenu>
 				</UncontrolledDropdown>

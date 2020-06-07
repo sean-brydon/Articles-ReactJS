@@ -8,10 +8,6 @@ const auth = require('./middleware/auth');
 router.route('/').post((req, res) => {
 	const { username, password } = req.body;
 
-	//Validation AGGGGG Bane of my life
-	//TODO -> salt hash with bcryptjs
-	// ----->i hate myself
-
 	if (!username || !password) {
 		return res.status(400).json({ msg: 'Please enter all fields' });
 	}
